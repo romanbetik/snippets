@@ -54,7 +54,8 @@
     var total = 0;
   
     Array.prototype.forEach.call(rows, function(row) {
-      var cells = row.querySelectorAll('td');
+      //var cells = row.querySelectorAll('td');
+      var cells = row.cells;
   
       cells = Array.prototype.slice.call(cells, 0);
   
