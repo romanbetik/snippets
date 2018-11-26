@@ -77,10 +77,12 @@
 
 function addLastRow(message) {
   var table = document.getElementById('issuetable');
+  var columns = table.rows[0].cells.length;
+
   var lastRow = table.insertRow(-1);
   var cell1 = lastRow.insertCell(0);
   cell1.innerHTML = '<span>' + message + '</span>';
-  cell1.setAttribute("colspan", 13);
+  cell1.setAttribute("colspan", columns);
 }
 
   function minutesToMds(minutes) {
