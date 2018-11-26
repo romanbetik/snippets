@@ -86,6 +86,8 @@
     return weeks + 'w, ' + days + 'd, ' + hours + 'h, ' + minutes + 'm';
   }
 
+  alert('Hello world!');
+
   var totalOriginalEstimateInMinutes = sumTimeColumn('aggregatetimeoriginalestimate');
   console.log('Total original estimate: ' + minutesToMds(totalOriginalEstimateInMinutes) + 'MD (' + minutesToVerboseTimeString(totalOriginalEstimateInMinutes) + ')' );
 
@@ -94,5 +96,4 @@
 
   var totalTimeSpent = sumTimeColumn('timespent');
   console.log('Total time spent: ' + minutesToMds(totalTimeSpent) + 'MD (' + minutesToVerboseTimeString(totalTimeSpent) + ')');
-  alert('Hello world!');
 })();
