@@ -41,7 +41,7 @@
 
     var ths = table.querySelectorAll('th');
   
-    var index;
+    var index = -1;
   
     Array.prototype.forEach.call(ths, function(th, i) {
       var data = th.getAttribute('data-id');
@@ -58,9 +58,16 @@
   
       cells = Array.prototype.slice.call(cells, 0);
   
+      if (!cells[index]) {
+        console.log('There might be an issue with column ' + columnName);
+        return 0;
+      }
+
       var value = cells[index].textContent;
-  
-      if (!value) return;
+
+      if (!value) {
+        return 0;
+      }
   
       total += parseJiraTime(value);
     });
@@ -96,7 +103,7 @@ function addLastRow(message) {
 
   var totalOriginalEstimateInMinutes = sumTimeColumn('aggregatetimeoriginalestimate');
   var totalRemainingEstimate = sumTimeColumn('aggregatetimeestimate');
-  var totalTimeSpent = sumTimeColumn('timespent');
+  var totalTimeSpent = sumTimeColumn('aggregatetimespent');
 
   var message = 'Total original estimate: ' + minutesToMds(totalOriginalEstimateInMinutes) + 'MD (' + minutesToVerboseTimeString(totalOriginalEstimateInMinutes) + '). ';
   message += 'Total remaining estimate: ' + minutesToMds(totalRemainingEstimate) + 'MD (' + minutesToVerboseTimeString(totalRemainingEstimate) + '). '
