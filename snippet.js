@@ -93,5 +93,6 @@
   console.log('Total remaining estimate: ' + minutesToMds(totalRemainingEstimate) + 'MD (' + minutesToVerboseTimeString(totalRemainingEstimate) + ')');
 
   var totalTimeSpent = sumTimeColumn('timespent');
-  console.log('Total time spent: ' + minutesToMds(totalTimeSpent) + 'MD (' + minutesToVerboseTimeString(totalTimeSpent) + ')'); 
+  console.log('Total time spent: ' + minutesToMds(totalTimeSpent) + 'MD (' + minutesToVerboseTimeString(totalTimeSpent) + ')');
+  alert('Hello world!');
 })();
