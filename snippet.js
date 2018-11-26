@@ -50,7 +50,7 @@
     });
   
     var rows = table.querySelectorAll('.issuerow');
-  
+      
     var total = 0;
   
     Array.prototype.forEach.call(rows, function(row) {
@@ -67,6 +67,14 @@
 
     return total
   }
+
+function addLastRow(message) {
+  var table = document.getElementById('issuetable');
+  var lastRow = table.insertRow(-1);
+  var cell1 = lastRow.insertCell(0);
+  cell1.innerHTML = '<span>' + message + '</span>';
+  cell1.setAttribute("colspan", 13);
+}
 
   function minutesToMds(minutes) {
     return parseFloat(minutes / 60 / 8).toFixed(2);
@@ -86,14 +94,17 @@
     return weeks + 'w, ' + days + 'd, ' + hours + 'h, ' + minutes + 'm';
   }
 
-  alert('Hello world!');
-
   var totalOriginalEstimateInMinutes = sumTimeColumn('aggregatetimeoriginalestimate');
-  console.log('Total original estimate: ' + minutesToMds(totalOriginalEstimateInMinutes) + 'MD (' + minutesToVerboseTimeString(totalOriginalEstimateInMinutes) + ')' );
-
   var totalRemainingEstimate = sumTimeColumn('aggregatetimeestimate');
-  console.log('Total remaining estimate: ' + minutesToMds(totalRemainingEstimate) + 'MD (' + minutesToVerboseTimeString(totalRemainingEstimate) + ')');
-
   var totalTimeSpent = sumTimeColumn('timespent');
+
+  var message = 'Total original estimate: ' + minutesToMds(totalOriginalEstimateInMinutes) + 'MD (' + minutesToVerboseTimeString(totalOriginalEstimateInMinutes) + '). ';
+  message += 'Total remaining estimate: ' + minutesToMds(totalRemainingEstimate) + 'MD (' + minutesToVerboseTimeString(totalRemainingEstimate) + '). '
+  message += 'Total time spent: ' + minutesToMds(totalTimeSpent) + 'MD (' + minutesToVerboseTimeString(totalTimeSpent) + '). '
+  
+  console.log('Total original estimate: ' + minutesToMds(totalOriginalEstimateInMinutes) + 'MD (' + minutesToVerboseTimeString(totalOriginalEstimateInMinutes) + ')' );
+  console.log('Total remaining estimate: ' + minutesToMds(totalRemainingEstimate) + 'MD (' + minutesToVerboseTimeString(totalRemainingEstimate) + ')');
   console.log('Total time spent: ' + minutesToMds(totalTimeSpent) + 'MD (' + minutesToVerboseTimeString(totalTimeSpent) + ')');
+
+  addLastRow(message);
 })();
